@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Trivia Night",
-    "slug": "trivia_night",
+    "name": "Triv",
+    "slug": "TriviaType",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [

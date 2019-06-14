@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 
-class HomeActivity extends React.Component {
+export default class HomeActivity extends React.Component {
 
     static navigationOptions = {
-        title: 'Home',
+        title: 'Main',
         headerStyle: {
             backgroundColor: '#03A9F4',
         },
@@ -22,9 +22,9 @@ class HomeActivity extends React.Component {
                 <Text style={styles.headerText} >Home Activity</Text>
                 <Button
 
-                    title="Go to Main Activity"
+                    title="Go to Home Activity"
 
-                    onPress={() => this.props.navigation.navigate('Main')}
+                    onPress={() => this.props.navigation.goBack()}
 
                 />
             </View>
@@ -47,4 +47,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomeActivity;
