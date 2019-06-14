@@ -4,7 +4,8 @@ import Button from "../components/Button";
 import FormTextInput from "../components/TextInput";
 import colors from "../config/colors";
 import strings from "../config/strings";
-import imageLogo from "../assets/Icons/Question_Mark.png";
+
+const imageLogo = "../assets/Icons/QuestionMark.png";
 
 interface State {
   email: string;
@@ -44,7 +45,7 @@ class LoginScreen extends React.Component<{}, State> {
         style={styles.container}
         behavior="padding"
       >
-        <Image source={imageLogo} style={styles.logo} />
+        <Image source={require(imageLogo)} style={styles.logo} />
         <View style={styles.form}>
           <FormTextInput
             value={this.state.email}
