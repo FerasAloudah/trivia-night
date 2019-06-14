@@ -1,10 +1,10 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, KeyboardAvoidingView, Image } from "react-native";
 import Button from "../components/Button";
 import FormTextInput from "../components/TextInput";
 import colors from "../config/colors";
 import strings from "../config/strings";
-
+import imageLogo from "../assets/Icons/Question_Mark.png";
 
 interface State {
   email: string;
@@ -12,6 +12,9 @@ interface State {
 }
 
 class LoginScreen extends React.Component<{}, State> {
+
+  passwordInputRef = React.createRef<FormTextInput>();
+
   readonly state: State = {
     email: "",
     password: ""
@@ -26,26 +29,43 @@ class LoginScreen extends React.Component<{}, State> {
   };
 
   handleLoginPress = () => {
-    
+
+  };
+
+  handleEmailSubmitPress = () => {
+    if (this.passwordInputRef.current) {
+      this.passwordInputRef.current.focus();
+    }
   };
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior="padding"
+      >
+        <Image source={imageLogo} style={styles.logo} />
         <View style={styles.form}>
           <FormTextInput
             value={this.state.email}
             onChangeText={this.handleEmailChange}
+            onSubmitEditing={this.handleEmailSubmitPress}
             placeholder={strings.EMAIL_PLACEHOLDER}
+            autoCorrect={false}
+            keyboardType="email-address"
+            returnKeyType="next"
           />
           <FormTextInput
+            ref={this.passwordInputRef}
             value={this.state.password}
             onChangeText={this.handlePasswordChange}
             placeholder={strings.PASSWORD_PLACEHOLDER}
+            secureTextEntry={true}
+            returnKeyType="done"
           />
           <Button label={strings.LOGIN} onPress={this.handleLoginPress} />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

@@ -5,10 +5,19 @@ import colors from "../config/colors";
 type Props = TextInputProps;
 
 class FormTextInput extends React.Component<Props> {
+  textInputRef = React.createRef<TextInput>();
+
+  focus = () => {
+    if (this.textInputRef.current) {
+      this.textInputRef.current.focus();
+    }
+  };
+
   render() {
     const { style, ...otherProps } = this.props;
     return (
       <TextInput
+        ref = {this.textInputRef}
         selectionColor={colors.TEXT}
         style={[styles.textInput, style]}
         {...otherProps}
