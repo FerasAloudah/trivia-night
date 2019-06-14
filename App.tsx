@@ -1,8 +1,3 @@
-import React, { FC } from "react";
-import AppContainer from "./routes";
+import LoginScreen from "./screens/HomeActivity";
 
-const App: FC = () => {
-  return <AppContainer />;
-};
-
-export default App;
+export default LoginScreen;

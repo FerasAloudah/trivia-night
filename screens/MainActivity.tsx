@@ -3,30 +3,10 @@ import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 
 export default class HomeActivity extends React.Component {
 
-    static navigationOptions = {
-        title: 'Main',
-        headerStyle: {
-            backgroundColor: '#03A9F4',
-        },
-
-        headerTintColor: '#fff',
-
-        headerTitleStyle: {
-            fontWeight: 'bold',
-        },
-    };
-
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.headerText} >Home Activity</Text>
-                <Button
 
-                    title="Go to Home Activity"
-
-                    onPress={() => this.props.navigation.goBack()}
-
-                />
             </View>
         );
     }
