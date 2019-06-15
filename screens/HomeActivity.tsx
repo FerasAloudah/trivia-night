@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, KeyboardAvoidingView, Image } from "react-native";
+import { StyleSheet, View, KeyboardAvoidingView, Image, StatusBar } from "react-native";
 import Button from "../components/Button";
 import FormTextInput from "../components/TextInput";
 import colors from "../config/colors";
@@ -10,6 +10,8 @@ const imageLogo = "../assets/Icons/QuestionMark.png";
 interface State {
   email: string;
   password: string;
+  emailTouched: boolean;
+  passwordTouched: boolean;
 }
 
 class LoginScreen extends React.Component<{}, State> {
@@ -18,7 +20,9 @@ class LoginScreen extends React.Component<{}, State> {
 
   readonly state: State = {
     email: "",
-    password: ""
+    password: "",
+    emailTouched: false,
+    passwordTouched: false,
   };
 
   handleEmailChange = (email: string) => {
@@ -30,9 +34,17 @@ class LoginScreen extends React.Component<{}, State> {
   };
 
   handleLoginPress = () => {
-
+    console.log("Hell");
+    
   };
 
+  handleEmailBlur = () => {
+    this.setState({ emailTouched: true });
+  }
+
+  handlePasswordBlur = () => {
+    this.setState({ passwordTouched: true });
+  }
   handleEmailSubmitPress = () => {
     if (this.passwordInputRef.current) {
       this.passwordInputRef.current.focus();
@@ -40,13 +52,27 @@ class LoginScreen extends React.Component<{}, State> {
   };
 
   render() {
+    const {
+      email,
+      password,
+      emailTouched,
+      passwordTouched
+    } = this.state;
+
+    const emailError =
+      !email && emailTouched ? strings.EMAIL_REQUIRED : undefined;
+    const passwordError =
+      !password && passwordTouched ? strings.PASSWORD_REQUIRED : undefined;
+
     return (
       <KeyboardAvoidingView
         style={styles.container}
         behavior="padding"
       >
+
         <Image source={require(imageLogo)} style={styles.logo} />
         <View style={styles.form}>
+
           <FormTextInput
             value={this.state.email}
             onChangeText={this.handleEmailChange}
@@ -55,7 +81,11 @@ class LoginScreen extends React.Component<{}, State> {
             autoCorrect={false}
             keyboardType="email-address"
             returnKeyType="next"
+            onBlur={this.handleEmailBlur}
+            error={emailError}
+
           />
+
           <FormTextInput
             ref={this.passwordInputRef}
             value={this.state.password}
@@ -63,8 +93,16 @@ class LoginScreen extends React.Component<{}, State> {
             placeholder={strings.PASSWORD_PLACEHOLDER}
             secureTextEntry={true}
             returnKeyType="done"
+            onBlur={this.handlePasswordBlur}
+            error={passwordError}
           />
-          <Button label={strings.LOGIN} onPress={this.handleLoginPress} />
+
+          <Button
+            label={strings.LOGIN}
+            onPress={this.handleLoginPress}
+            disabled={!email || !password}
+          />
+
         </View>
       </KeyboardAvoidingView>
     );

@@ -3,15 +3,25 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 
 interface Props {
+  disabled?: boolean;
   label: string;
   onPress: () => void;
 }
 
 class Button extends React.Component<Props> {
   render() {
-    const { label, onPress } = this.props;
+    const { label, onPress, disabled } = this.props;
+    const containerStyle = [
+      styles.container,
+      disabled ? styles.containerDisabled : styles.containerEnabled
+    ];
+
     return (
-      <TouchableOpacity style={styles.container} onPress={onPress}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={onPress}
+        disabled={disabled}
+      >
         <Text style={styles.text}>{label}</Text>
       </TouchableOpacity>
     );
@@ -30,6 +40,15 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: "rgba(255,255,255,0.7)"
   },
+
+  containerDisabled: {
+    opacity: 1
+  },
+  
+  containerEnabled: {
+    opacity: .3
+  },
+
   text: {
     color: colors.TEXT,
     textAlign: "center",

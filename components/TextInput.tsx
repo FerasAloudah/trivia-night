@@ -1,8 +1,10 @@
 import * as React from "react";
-import { StyleSheet, TextInput, TextInputProps } from "react-native";
+import { StyleSheet, TextInput, TextInputProps, View, Text } from "react-native";
 import colors from "../config/colors";
 
-type Props = TextInputProps;
+type Props = TextInputProps & {
+  error?: string;
+};
 
 class FormTextInput extends React.Component<Props> {
   textInputRef = React.createRef<TextInput>();
@@ -14,24 +16,32 @@ class FormTextInput extends React.Component<Props> {
   };
 
   render() {
-    const { style, ...otherProps } = this.props;
+    const { error, style, ...otherProps } = this.props;
     return (
-      <TextInput
-        ref = {this.textInputRef}
-        selectionColor={colors.TEXT}
-        style={[styles.textInput, style]}
-        {...otherProps}
-      />
+      <View style={[styles.container, style]}>
+        <TextInput
+          ref={this.textInputRef}
+          selectionColor={colors.ACCENT}
+          style={styles.textInput}
+          {...otherProps}
+        />
+        <Text style={styles.errorText}>{error || ""}</Text>
+      </View>
     );
   }
 }
-
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 10
+  },
   textInput: {
     height: 40,
     borderColor: colors.ACCENT,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    marginBottom: 20
+    borderBottomWidth: StyleSheet.hairlineWidth
+  },
+  errorText: {
+    height: 20,
+    color: colors.TORCH_RED
   }
 });
 
