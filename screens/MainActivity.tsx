@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 
 export default class HomeActivity extends React.Component {
-
     render() {
         return (
             <View style={styles.container}>

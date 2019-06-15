@@ -1,3 +1,10 @@
-import LoginScreen from "./screens/HomeActivity";
+import React from 'react';
+import AppNavigator from './routes/index';
 
-export default LoginScreen;
+export default class App extends React.Component {
+    render() {
+        return (
+            <AppNavigator />
+        );
+    }
+}

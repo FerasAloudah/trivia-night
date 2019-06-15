@@ -7,6 +7,8 @@ import strings from "../config/strings";
 
 const imageLogo = "../assets/Icons/QuestionMark.png";
 
+
+
 interface State {
   email: string;
   password: string;
@@ -35,7 +37,6 @@ class LoginScreen extends React.Component<{}, State> {
 
   handleLoginPress = () => {
     console.log("Hell");
-    
   };
 
   handleEmailBlur = () => {
