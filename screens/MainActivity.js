@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image } from 'react-native';
+import { Button } from 'native-base';
 
 class HomeActivity extends React.Component {
 
@@ -14,37 +15,74 @@ class HomeActivity extends React.Component {
         headerTitleStyle: {
             fontWeight: 'bold',
         },
+        headerRight: (
+            <Image
+                source={{ uri: "https://pbs.twimg.com/profile_images/856988996504657920/zvk_0MeE_400x400.jpg" }}
+                style={{
+                    height: 45,
+                    width: 45,
+                    borderRadius: 40,
+                    overflow: 'hidden',
+                    margin: 8,
+                }}
+            />
+        ),
+        headerLeft: null
     };
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.headerText} >Home Activity</Text>
-                <Button
-
-                    title="Go to Home Activity"
-
-                    onPress={() => this.props.navigation.goBack()}
-
-                />
+            <View style={styles.con}>
+                <View style={styles.optionsCon}>
+                    <View style={styles.buttonView}>
+                        <Button style={styles.SquareShapeView} title="here" >
+                            <Text>Hell</Text>
+                        </Button>
+                        <Button style={styles.SquareShapeView} title="here" >
+                            <Text>Hell</Text>
+                        </Button>
+                    </View>
+                    <View style={styles.buttonView}>
+                        <Button style={styles.SquareShapeView} title="here" >
+                            <Text>Hell</Text>
+                        </Button>
+                        <Button style={styles.SquareShapeView} title="here" >
+                            <Text>Hell</Text>
+                        </Button>
+                    </View>
+                </View>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
+    con: {
         flex: 1,
+        backgroundColor: '#2c3e50',
+        justifyContent: 'center',
+    },
+
+    optionsCon: {
+        flex: 1,
+        backgroundColor: '#2c3e50',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
     },
-    headerText: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-        fontWeight: 'bold'
+
+    buttonView: {
+        flexDirection: 'row',
     },
+
+    SquareShapeView: {
+        width: 170,
+        height: 100,
+        backgroundColor: '#9C27B0',
+        elevation: 8,
+        borderRadius: 10,
+        margin: 5,
+    },
+
 });
 
 export default HomeActivity;
