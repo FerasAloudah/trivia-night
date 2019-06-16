@@ -18,7 +18,6 @@ class HomeActivity extends React.Component {
         },
     };
     onButtonPress = () => {
-        console.log("d");
         this.props.navigation.navigate('Main')
     }
 
