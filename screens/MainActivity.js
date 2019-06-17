@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'native-base';
+import Colors from '../components/colors';
 
-class HomeActivity extends React.Component {
+export default class HomeActivity extends React.Component {
 
     static navigationOptions = {
         title: 'Main',
         headerStyle: {
-            backgroundColor: '#03A9F4',
+            backgroundColor: Colors.HEADER_COLOR,
         },
 
-        headerTintColor: '#fff',
+        headerTintColor: Colors.WHITE,
 
         headerTitleStyle: {
             fontWeight: 'bold',
@@ -34,28 +35,32 @@ class HomeActivity extends React.Component {
 
     };
 
+    onCatagoryPress = () => {
+        this.props.navigation.navigate('Catagory')
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.buttonContainer}>
                     <View style={styles.buttonView}>
 
-                        <Button style={styles.button}>
+                        <Button style={styles.button} onPress={this.onCatagoryPress}>
                             <Text style={styles.buttonText}>Hell</Text>
                         </Button>
 
-                        <Button style={styles.button}>
+                        <Button style={styles.button} onPress={this.onCatagoryPress}>
                             <Text style={styles.buttonText}>Hell</Text>
                         </Button>
 
                     </View>
                     <View style={styles.buttonView}>
 
-                        <Button style={styles.button}>
+                        <Button style={styles.button} onPress={this.onCatagoryPress}>
                             <Text style={styles.buttonText}>Hell</Text>
                         </Button>
 
-                        <Button style={styles.button}>
+                        <Button style={styles.button} onPress={this.onCatagoryPress}>
                             <Text style={styles.buttonText}>Hell</Text>
                         </Button>
 
@@ -69,7 +74,7 @@ class HomeActivity extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#2c3e50',
+        backgroundColor: Colors.BACKGROUND_COLOR,
     },
     buttonContainer: {
         flex: 1,
@@ -91,9 +96,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 18,
-        color: 'white',
+        color: Colors.WHITE,
     }
 
 });
 
-export default HomeActivity;

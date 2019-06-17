@@ -1,17 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, KeyboardAvoidingView, TextInput } from 'react-native';
+import Colors from '../components/colors';
 
 const image = '../assets/icons/QuestionMark.png'
 
-class HomeActivity extends React.Component {
+export default class HomeActivity extends React.Component {
 
     static navigationOptions = {
         title: 'Home',
         headerStyle: {
-            backgroundColor: '#2980b6',
+            backgroundColor: Colors.HEADER_COLOR,
         },
 
-        headerTintColor: '#fff',
+        headerTintColor: Colors.WHITE,
 
         headerTitleStyle: {
             fontWeight: 'bold',
@@ -56,23 +57,23 @@ class HomeActivity extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#2c3e50',
+        backgroundColor: Colors.BACKGROUND_COLOR,
         padding: 20,
         justifyContent: 'space-between',
     },
     input: {
         height: 40,
-        backgroundColor: 'rgba(225,225,225,0.2)',
+        backgroundColor: Colors.INPUT_BACKGROUND,
         marginBottom: 10,
         padding: 10,
-        color: '#fff'
+        color: Colors.WHITE
     },
     buttonContainer: {
-        backgroundColor: '#2980b6',
+        backgroundColor: Colors.BUTTON_COLOR,
         paddingVertical: 15
     },
     buttonText: {
-        color: '#fff',
+        color: Colors.WHITE,
         textAlign: 'center',
         fontWeight: '700'
     },
@@ -85,4 +86,3 @@ const styles = StyleSheet.create({
 
 });
 
-export default HomeActivity;
