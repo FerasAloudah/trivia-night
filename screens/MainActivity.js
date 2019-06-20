@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'native-base';
 import Colors from '../components/colors';
 
 export default class HomeActivity extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
         title: 'Main',
         headerStyle: {
             backgroundColor: Colors.HEADER_COLOR,
@@ -17,7 +17,7 @@ export default class HomeActivity extends React.Component {
             fontWeight: 'bold',
         },
         headerRight: (
-            <TouchableOpacity onPress={() => console.log("Hell")}>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile', { name: 'Cat' })}>
                 <Image
                     source={{ uri: "https://pbs.twimg.com/profile_images/856988996504657920/zvk_0MeE_400x400.jpg" }}
                     style={{
@@ -33,35 +33,38 @@ export default class HomeActivity extends React.Component {
         ),
         headerLeft: null
 
-    };
+    });
 
     onCatagoryPress = () => {
-        this.props.navigation.navigate('Catagory')
+        this.props.navigation.navigate('Catagory');
     }
+
+
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.buttonContainer}>
-                    <View style={styles.buttonView}>
+            <View style={styles.Container}>
+                <Text style={styles.Text}>Choose A catagory</Text>
+                <View style={styles.ButtonContainer}>
+                    <View style={styles.ButtonView}>
 
-                        <Button style={styles.button} onPress={this.onCatagoryPress}>
-                            <Text style={styles.buttonText}>Hell</Text>
+                        <Button style={styles.Button} onPress={this.onCatagoryPress}>
+                            <Text style={styles.ButtonText}>Hell</Text>
                         </Button>
 
-                        <Button style={styles.button} onPress={this.onCatagoryPress}>
-                            <Text style={styles.buttonText}>Hell</Text>
+                        <Button style={styles.Button} onPress={this.onCatagoryPress}>
+                            <Text style={styles.ButtonText}>Hell</Text>
                         </Button>
 
                     </View>
-                    <View style={styles.buttonView}>
+                    <View style={styles.ButtonView}>
 
-                        <Button style={styles.button} onPress={this.onCatagoryPress}>
-                            <Text style={styles.buttonText}>Hell</Text>
+                        <Button style={styles.Button} onPress={this.onCatagoryPress}>
+                            <Text style={styles.ButtonText}>Hell</Text>
                         </Button>
 
-                        <Button style={styles.button} onPress={this.onCatagoryPress}>
-                            <Text style={styles.buttonText}>Hell</Text>
+                        <Button style={styles.Button} onPress={this.onCatagoryPress}>
+                            <Text style={styles.ButtonText}>Hell</Text>
                         </Button>
 
                     </View>
@@ -72,20 +75,20 @@ export default class HomeActivity extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    Container: {
         flex: 1,
         backgroundColor: Colors.BACKGROUND_COLOR,
     },
-    buttonContainer: {
+    ButtonContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-end',
         paddingBottom: 36,
     },
-    buttonView: {
+    ButtonView: {
         flexDirection: "row",
     },
-    button: {
+    Button: {
         margin: 5,
         height: 100,
         width: 165,
@@ -94,9 +97,16 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
         textAlignVertical: "center"
     },
-    buttonText: {
+    ButtonText: {
         fontSize: 18,
         color: Colors.WHITE,
+    },
+    Text: {
+        fontSize: 36,
+        color: Colors.WHITE,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        marginTop: 48,
     }
 
 });

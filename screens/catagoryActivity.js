@@ -1,13 +1,16 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Colors from '../components/colors';
 import { Button } from 'native-base';
 import Metrics from '../components/metrics';
 import Strings from '../components/strings';
 
 export default class catagoryActivity extends React.Component {
-    static navigationOptions = {
+
+    static navigationOptions = ({ navigation }) => ({
+
         title: 'catagoryName',
+
         headerStyle: {
             backgroundColor: Colors.HEADER_COLOR,
         },
@@ -18,7 +21,7 @@ export default class catagoryActivity extends React.Component {
             fontWeight: 'bold',
         },
         headerRight: (
-            <TouchableOpacity onPress={() => console.log("Hell")}>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile', { name: 'Cat' })}>
                 <Image
                     source={{ uri: "https://pbs.twimg.com/profile_images/856988996504657920/zvk_0MeE_400x400.jpg" }}
                     style={{
@@ -32,17 +35,21 @@ export default class catagoryActivity extends React.Component {
                 />
             </TouchableOpacity>
         ),
+    });
+
+    onProfilePress = () => {
+        this.props.navigation.navigate('Profile', { name: 'Cat' });
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <Button style={styles.buttonAbove}>
-                    <Text style={styles.buttonText}>Online</Text>
+                    <Text style={styles.buttonText}>{Strings.ONLINE}</Text>
                 </Button>
 
                 <Button style={styles.buttonBottom}>
-                    <Text style={styles.buttonText}>Offline</Text>
+                    <Text style={styles.buttonText}>{Strings.OFFLINE}</Text>
                 </Button>
             </View>
         )
@@ -66,9 +73,9 @@ const styles = StyleSheet.create({
     buttonBottom: {
         margin: 16,
         height: Metrics.DEVICE_HEIGHT / 2.5,
-        width:330,
+        width: 330,
         borderRadius: 8,
-        position:"relative",
+        position: "relative",
         justifyContent: 'center',
         alignItems: 'center'
     },

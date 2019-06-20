@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, YellowBox } from 'react-native';
+import React from 'react';
 import HomeScreen from './screens/HomeActivity'
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import MainActivity from './screens/MainActivity';
 import Catagory from './screens/catagoryActivity';
+import Profile from './screens/ProfileActivity';
 
 const RootStack = createStackNavigator(
   {
     Home: { screen: HomeScreen },
     Main: { screen: MainActivity },
     Catagory: { screen: Catagory },
+    Profile: { screen: Profile },
 
   },
   {
@@ -32,11 +33,4 @@ export default class App extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
